@@ -1,22 +1,28 @@
-import logo from './logo.svg';
+
+// PRACTICE FORMS, INPUTS, AND TRIGGERING REFRESHES IN HOOKS
+
 import './App.css';
+import useStateWithHistory from './hooks/useStateWithHistory';
 
 function App() {
+  const [
+    value, // current value
+    setValue, // function to update the value
+    goBack, // function to go back to the previous state
+    goForward, // function to go forward to the next state
+    history, // array of historical values
+  ] = useStateWithHistory(10);
+
+  setValue(30);
+
+
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        [{history.join(", ")}]
+        <br />
+        Current Value: {value}
       </header>
     </div>
   );
